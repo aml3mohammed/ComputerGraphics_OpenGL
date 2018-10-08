@@ -1,0 +1,242 @@
+/*
+ * GLUT Shapes Demo
+ *
+ * Written by Nigel Stewart November 2003
+ *
+ * This program is test harness for the sphere, cone
+ * and torus shapes in GLUT.
+ *
+ * Spinning wireframe and smooth shaded shapes are
+ * displayed until the ESC or q key is pressed.  The
+ * number of geometry stacks and slices can be adjusted
+ * using the + and - keys.
+ */
+#include <windows.h>
+
+#ifdef __APPLE__
+#include <GLUT/glut.h>
+#else
+#include <GL/glut.h>
+#endif
+
+#include <stdlib.h>
+void init (void)
+{
+	glClearColor(1.0,1.0,1.0,0.0); //specifies clear 	values for the color buffers (R,G,B,Alpha)
+	glMatrixMode(GL_PROJECTION); // sets the 	current matrix mode
+	gluOrtho2D(0.0,200.0,0.0,150.0); //2D orthographic 	projection matrix (left,right,bottom,top)
+}
+
+void shapes (void)
+{
+	glClear(GL_COLOR_BUFFER_BIT);
+	glColor3f(0.0,0.0,0.0);
+	glBegin(GL_LINES);
+        glVertex2i(100,0);
+        glVertex2i(100,200);
+
+        glVertex2i(0,50);
+        glVertex2i(200,50);
+
+        glVertex2i(0,100);
+        glVertex2i(200,100);
+
+	glEnd();
+
+	glColor3f(0.5,0.7,1.0);
+
+
+	//Pentagon
+
+	glBegin(GL_TRIANGLES);
+
+         glVertex2i(65,102);  //right bottom
+         glVertex2i(11,130);   //left
+        glVertex2i(25,102);   //left bottom
+
+        glVertex2i(65,102);     //right bottom
+        glVertex2i(79,130);    //right
+        glVertex2i(11,130);     //left
+
+        glVertex2i(79,130);    //right
+        glVertex2i(11,130);     //left
+        glVertex2i(46,148);    //top
+
+
+   	 glEnd();
+
+
+    //Hexagon
+
+    glBegin(GL_TRIANGLES);
+
+         glVertex2i(102,125);
+         glVertex2i(165,102);
+        glVertex2i(125,102);
+
+        glVertex2i(102,125);
+        glVertex2i(165,148);
+        glVertex2i(125,148);
+
+        glVertex2i(102,125);
+        glVertex2i(165,148);
+        glVertex2i(188,125);
+
+        glVertex2i(102,125);
+        glVertex2i(188,125);
+        glVertex2i(165,102);
+
+
+   	 glEnd();
+
+
+    //Heptagon
+
+    glBegin(GL_TRIANGLES);
+
+          glVertex2i(57,52);
+         glVertex2i(15,65);
+        glVertex2i(30,52);
+
+        glVertex2i(57,52);
+        glVertex2i(72,65);
+        glVertex2i(15,65);
+
+        glVertex2i(15,65);
+        glVertex2i(70,82);
+        glVertex2i(72,65);
+
+        glVertex2i(15,65);
+        glVertex2i(70,82);
+        glVertex2i(17,82);
+
+        glVertex2i(17,82);
+        glVertex2i(70,82);
+        glVertex2i(43,92);
+
+
+   	 glEnd();
+
+
+   	 //Octagon
+
+    glBegin(GL_TRIANGLES);
+
+          glVertex2i(115,65);
+         glVertex2i(158,52);
+        glVertex2i(132,52);
+
+        glVertex2i(115,65);
+        glVertex2i(158,52);
+        glVertex2i(175,65);
+
+        glVertex2i(115,65);
+        glVertex2i(175,65);
+        glVertex2i(175,80);
+
+        glVertex2i(115,65);
+        glVertex2i(175,80);
+        glVertex2i(115,80);
+
+        glVertex2i(115,80);
+        glVertex2i(175,80);
+        glVertex2i(158,92);
+
+        glVertex2i(115,80);
+        glVertex2i(132,92);
+        glVertex2i(158,92);
+
+   	 glEnd();
+
+
+    //Nonagon
+
+    glBegin(GL_TRIANGLES);
+
+          glVertex2i(44,2);
+         glVertex2i(14,11);
+        glVertex2i(28,2);
+
+        glVertex2i(44,2);
+        glVertex2i(58,11);
+        glVertex2i(14,11);
+
+        glVertex2i(14,11);
+        glVertex2i(58,11);
+        glVertex2i(62,23);
+
+        glVertex2i(14,11);
+        glVertex2i(62,23);
+        glVertex2i(10,23);
+
+        glVertex2i(10,23);
+        glVertex2i(62,23);
+        glVertex2i(54,35);
+
+        glVertex2i(10,23);
+        glVertex2i(54,35);
+        glVertex2i(20,35);
+
+        glVertex2i(37,40);
+        glVertex2i(54,35);
+        glVertex2i(20,35);
+
+   	 glEnd();
+
+
+    //Decagon
+
+    glBegin(GL_TRIANGLES);
+
+          glVertex2i(143,2);
+         glVertex2i(115,9);
+        glVertex2i(127,2);
+
+        glVertex2i(143,2);
+        glVertex2i(155,9);
+        glVertex2i(115,9);
+
+        glVertex2i(115,9);
+        glVertex2i(155,9);
+        glVertex2i(159,19);
+
+        glVertex2i(115,9);
+        glVertex2i(159,19);
+        glVertex2i(111,19);
+
+        glVertex2i(111,19);
+        glVertex2i(159,19);
+        glVertex2i(155,29);
+
+        glVertex2i(115,29);
+        glVertex2i(111,19);
+        glVertex2i(155,29);
+
+        glVertex2i(115,29);
+        glVertex2i(155,29);
+        glVertex2i(143,36);
+
+        glVertex2i(115,29);
+        glVertex2i(143,36);
+        glVertex2i(127,36);
+
+   	 glEnd();
+
+	glFlush();
+
+}
+
+
+int main(int argc, char *argv[])
+{
+    glutInit(&argc,argv);
+	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB); //sets 	the initial display mode
+	glutInitWindowPosition(50,100); //sets the initial window 	position
+    	glutInitWindowSize(600,600); //sets the initial window size
+    	glutCreateWindow("Shapes"); // creates the window with name line
+	init();
+	glutDisplayFunc(shapes); //sets the display callback for 	the current window.
+	glutMainLoop();
+
+    return EXIT_SUCCESS;
+}
